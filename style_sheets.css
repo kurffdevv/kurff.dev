@@ -1,0 +1,59 @@
+/* BODY SHIT */
+
+.body1{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-family: monospace;
+}
+
+/* TEXT/FONTS */
+
+.text{
+    font-size: 36px;
+    font-family: monospace;
+}
+
+.subtext{
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.header{
+    font-size: 54px;
+    font-family: monospace;
+}
+
+/* UNIQUE */
+
+/* i got this from html.am lol */
+
+.scroll-left {
+  height: 50px;  
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-left p {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  animation: scroll-left 120s linear infinite;
+}
+
+.scroll-left span {
+  padding-right: 40px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);      
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
