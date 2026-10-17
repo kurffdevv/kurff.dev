@@ -24,8 +24,22 @@
     font-weight: lighter;
 }
 
+.minitext{
+    font-size: 10px;
+    font-family: monospace;
+    text-shadow: 10px 10px 25px #000000;
+    font-weight: lighter;
+}
+
 .header{
     font-size: 54px;
+    font-family: monospace;
+    text-shadow: 10px 10px 25px #000000;
+    font-weight: bold;
+}
+
+.head{
+    font-size: 72px;
     font-family: monospace;
     text-shadow: 10px 10px 25px #000000;
     font-weight: bold;
