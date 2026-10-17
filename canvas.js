@@ -53,8 +53,8 @@ function redo() {
     if (redoStack.length === 0) return;
 
     undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-    if (undoStack.length >= MAX_HISTORY) {
-        undoStack.shift();
+    if (redoStack.length >= MAX_HISTORY) {
+        redoStack.shift();
     }
 
     const nextState = redoStack.pop();
@@ -301,4 +301,51 @@ canvas.addEventListener("pointerdown", (e) => {
     lastGridY = Math.floor((e.clientY - rect.top) / PIXEL_SIZE);
     
     if (isPressureActive && e.pointerType === "pen" && e.pressure > 0) {
-        lastBrushSize = Math.max(1, Math.
+        lastBrushSize = Math.max(1, Math.round(baseBrushSize * e.pressure));
+    } else {
+        lastBrushSize = baseBrushSize;
+    }
+    
+    drawPixel(e);
+});
+
+canvas.addEventListener("pointermove", (e) => {
+    if (!e.isPrimary) return;
+    if (isDrawing) {
+        e.preventDefault();
+    }
+    drawPixel(e);
+}, { passive: false });
+
+window.addEventListener("pointerup", (e) => {
+    if (!e.isPrimary) return;
+    isDrawing = false;
+    currentButton = -1;
+    lastGridX = null;
+    lastGridY = null;
+    lastBrushSize = null;
+});
+
+// Click/tap ON canvas locks scroll; click/tap OFF canvas unlocks scroll
+window.addEventListener("pointerdown", (e) => {
+    if (canvas.contains(e.target)) {
+        canvas.style.touchAction = "none";
+    } else {
+        canvas.style.touchAction = "auto";
+    }
+});
+
+undoButton.addEventListener("click", undo);
+
+redoButton.addEventListener("click", redo);
+
+window.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
+        e.preventDefault();
+        undo();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "y") {
+        e.preventDefault();
+        redo();
+    }
+});
