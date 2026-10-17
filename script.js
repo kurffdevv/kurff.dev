@@ -1,22 +1,24 @@
-document.addEventListener('click', function(e) {
-    const link = e.target.closest('[scroll-to]');
-    if (!link) return;
-    
-    e.preventDefault();
-    const id = link.getAttribute('scroll-to').match(/id:\s*([^;]+)/)?.[1]?.trim();
-    
-    const target = document.getElementById(id);
-    if (target) {
-        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('[scroll-to]');
+        if (!link) return;
         
-        const padding = 100; 
-        const offsetPosition = elementPosition - padding;
+        e.preventDefault();
+        const id = link.getAttribute('scroll-to').match(/id:\s*([^;]+)/)?.[1]?.trim();
+        
+        const target = document.getElementById(id);
+        if (target) {
+            const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+            
+            const padding = 100; 
+            const offsetPosition = elementPosition - padding;
 
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    }
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
 });
 
 
