@@ -291,10 +291,6 @@ function clearCanvas(event){
 
 canvas.addEventListener("pointerdown", (e) => {
     if (!e.isPrimary) return;
-    
-    // Disable scrolling when touching/clicking canvas
-    canvas.style.touchAction = "none";
-    
     saveState();
     redoStack = []; 
     isDrawing = true;
@@ -313,10 +309,14 @@ canvas.addEventListener("pointerdown", (e) => {
     drawPixel(e);
 });
 
+// { passive: false } allows e.preventDefault() to block mobile page scrolling while drawing
 canvas.addEventListener("pointermove", (e) => {
     if (!e.isPrimary) return;
+    if (isDrawing) {
+        e.preventDefault();
+    }
     drawPixel(e);
-});
+}, { passive: false });
 
 window.addEventListener("pointerup", (e) => {
     if (!e.isPrimary) return;
@@ -327,14 +327,27 @@ window.addEventListener("pointerup", (e) => {
     lastBrushSize = null;
 });
 
-// Re-enable scrolling if the user touches/clicks anywhere outside the canvas
-window.addEventListener("pointerdown", (e) => {
-    if (!canvas.contains(e.target)) {
-        canvas.style.touchAction = "auto";
+window.addEventListener("pointercancel", (e) => {
+    if (!e.isPrimary) return;
+    isDrawing = false;
+    currentButton = -1;
+    lastGridX = null;
+    lastGridY = null;
+    lastBrushSize = null;
+});
+
+shapeToggle.addEventListener("click", () => {
+    if (brushShape === "square") {
+        brushShape = "circle";
+        shapeImg.src = "path_to_active_image.png";
+    } else {
+        brushShape = "square";
+        shapeImg.src = "path_to_image.png";
     }
 });
 
 undoButton.addEventListener("click", undo);
+
 redoButton.addEventListener("click", redo);
 
 window.addEventListener("keydown", (e) => {
