@@ -309,7 +309,6 @@ canvas.addEventListener("pointerdown", (e) => {
     drawPixel(e);
 });
 
-// { passive: false } allows e.preventDefault() to block mobile page scrolling while drawing
 canvas.addEventListener("pointermove", (e) => {
     if (!e.isPrimary) return;
     if (isDrawing) {
@@ -334,16 +333,6 @@ window.addEventListener("pointercancel", (e) => {
     lastGridX = null;
     lastGridY = null;
     lastBrushSize = null;
-});
-
-shapeToggle.addEventListener("click", () => {
-    if (brushShape === "square") {
-        brushShape = "circle";
-        shapeImg.src = "path_to_active_image.png";
-    } else {
-        brushShape = "square";
-        shapeImg.src = "path_to_image.png";
-    }
 });
 
 undoButton.addEventListener("click", undo);
