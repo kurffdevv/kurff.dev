@@ -291,6 +291,10 @@ function clearCanvas(event){
 
 canvas.addEventListener("pointerdown", (e) => {
     if (!e.isPrimary) return;
+    
+    // Disable scrolling when touching/clicking canvas
+    canvas.style.touchAction = "none";
+    
     saveState();
     redoStack = []; 
     isDrawing = true;
@@ -323,20 +327,14 @@ window.addEventListener("pointerup", (e) => {
     lastBrushSize = null;
 });
 
-shapeToggle.addEventListener("click", () => {
-    if (brushShape === "square") {
-        brushShape = "circle";
-        shapeImg.src = "path_to_active_image.png";
-    } else {
-        brushShape = "square";
-        shapeImg.src = "path_to_image.png";
+// Re-enable scrolling if the user touches/clicks anywhere outside the canvas
+window.addEventListener("pointerdown", (e) => {
+    if (!canvas.contains(e.target)) {
+        canvas.style.touchAction = "auto";
     }
 });
 
-canvas.style.touchAction = "none";
-
 undoButton.addEventListener("click", undo);
-
 redoButton.addEventListener("click", redo);
 
 window.addEventListener("keydown", (e) => {
