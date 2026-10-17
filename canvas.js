@@ -53,8 +53,8 @@ function redo() {
     if (redoStack.length === 0) return;
 
     undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-    if (redoStack.length >= MAX_HISTORY) {
-        redoStack.shift();
+    if (undoStack.length >= MAX_HISTORY) {
+        undoStack.shift();
     }
 
     const nextState = redoStack.pop();
@@ -311,11 +311,8 @@ canvas.addEventListener("pointerdown", (e) => {
 
 canvas.addEventListener("pointermove", (e) => {
     if (!e.isPrimary) return;
-    if (isDrawing) {
-        e.preventDefault();
-    }
     drawPixel(e);
-}, { passive: false });
+});
 
 window.addEventListener("pointerup", (e) => {
     if (!e.isPrimary) return;
@@ -326,14 +323,7 @@ window.addEventListener("pointerup", (e) => {
     lastBrushSize = null;
 });
 
-// Click/tap ON canvas locks scroll; click/tap OFF canvas unlocks scroll
-window.addEventListener("pointerdown", (e) => {
-    if (canvas.contains(e.target)) {
-        canvas.style.touchAction = "none";
-    } else {
-        canvas.style.touchAction = "auto";
-    }
-});
+canvas.style.touchAction = "none";
 
 undoButton.addEventListener("click", undo);
 
