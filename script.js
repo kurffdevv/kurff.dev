@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function convertReg2No(id1, id2, id3){
   const stupidNum = Number(document.getElementById(id1).value);
 
-  const stupidVal = document.getElementById(id2).value;
+  const selectStupidVal = document.getElementById(id2);
+  const stupidVal = selectStupidVal.selectedOptions[0] ? selectStupidVal.selectedOptions[0].value : "";
 
   const stupidOut = document.getElementById(id3);
 
