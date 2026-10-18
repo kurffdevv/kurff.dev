@@ -37,6 +37,70 @@ document.addEventListener("DOMContentLoaded", () => {
   dih.innerHTML = repeated + repeated;
 });
 
+function convertReg2No(id1, id2, id3){
+  const stupidNum = Number(document.getElementById(id1).value);
+
+  const stupidVal = document.getElementById(id2).value;
+
+  const stupidOut = document.getElementById(id3);
+
+  if (stupidNum > 0) {
+    if (stupidVal !== ""){
+      if (stupidVal == "moon"){
+        const newOut = stupidNum * (1/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+
+      // planets
+
+      if (stupidVal == "mercury"){
+        const newOut = stupidNum * (3.70/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+      if (stupidVal == "venus"){
+        const newOut = stupidNum * (8.87/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+      if (stupidVal == "mars"){
+        const newOut = stupidNum * (3.73/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+      if (stupidVal == "jupiter"){
+        const newOut = stupidNum * (25.92/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+      if (stupidVal == "saturn"){
+        const newOut = stupidNum * (11.19/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+      if (stupidVal == "uranus"){
+        const newOut = stupidNum * (9.01/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+      if (stupidVal == "neptune"){
+        const newOut = stupidNum * (11.27/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+
+      // fucked planets
+
+      if (stupidVal == "pluto"){
+        const newOut = stupidNum * (0.62/9.82);
+
+        stupidOut.textContent = `output: ${newOut.toFixed(2)}`
+      }
+    }
+  }
+}
+
 const colorPicker = document.getElementById('colour');
 const hexValueText = document.getElementById('hexValue');
 

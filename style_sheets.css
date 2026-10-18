@@ -53,6 +53,20 @@
   mix-blend-mode: multiply;
 }
 
+/* INPUT SHTUFF */
+
+.input1{
+  border-style: dashed;
+  border-radius: 50px;
+  padding: 8px;
+}
+
+.select1{
+  padding: 10px;
+  border: none;
+  box-shadow: 10px 10px 10px #000000;
+}
+
 /* BUTTONS */
 
 .button1{
@@ -92,6 +106,27 @@
   cursor: pointer;
   transform: scalex(1.03125);
   border-radius: 50% / 12.5vw;
+  filter: brightness(1.5);
+
+  font-weight: bold;
+}
+
+.button3{
+  border: none;
+  border-radius: 50% / 25vw;
+  box-shadow: 10px 10px 10px #000000;
+
+  /* transitions: */
+  transition: 75ms ease-in-out;
+}
+
+.button3:hover {
+  border: none;
+  box-shadow: 10px 10px 10px #000000;
+
+  cursor: pointer;
+  transform:scalex(1.03125);
+  border-radius: 50% / 25vw;
   filter: brightness(1.5);
 
   font-weight: bold;
