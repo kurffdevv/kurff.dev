@@ -45,6 +45,12 @@ function convertReg2No(id1, id2, id3){
 
   const stupidOut = document.getElementById(id3);
 
+  if (document.getElementById(id1).value.trim() === "" || stupidVal === "") {
+    stupidOut.textContent = `error 1593: you must input a value for all inputs.`;
+  } 
+  else if (stupidNum <= 0) {
+    stupidOut.textContent = `error 1594: inputted number must be freaking larger than zero you idiot, you actual dumb doorstopper that kills people who touch their grass.`;
+
   if (stupidNum > 0) {
     if (stupidVal !== ""){
       if (stupidVal == "moon"){
@@ -99,14 +105,6 @@ function convertReg2No(id1, id2, id3){
         stupidOut.textContent = `output: ${newOut.toFixed(2)}`
       }
     }
-
-    else{
-      stupidOut.textContent = `error 1593: you must input a value for all inputs.`
-    }
-  }
-  
-  else{
-    stupidOut.textContent = `error 1593: you must input a value for all inputs.`
   }
 }
 
