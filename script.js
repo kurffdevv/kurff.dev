@@ -99,15 +99,25 @@ function convertReg2No(id1, id2, id3){
         stupidOut.textContent = `output: ${newOut.toFixed(2)}`
       }
     }
+
+    else{
+      stupidOut.textContent = `error 1593: you must input a value for all inputs.`
+    }
+  }
+  
+  else{
+    stupidOut.textContent = `error 1593: you must input a value for all inputs.`
   }
 }
 
 const colorPicker = document.getElementById('colour');
 const hexValueText = document.getElementById('hexValue');
 
-colorPicker.addEventListener('input', (event) => {
-    hexValueText.textContent = event.target.value;
-});
+if (colorPicker && hexValueText) {
+    colorPicker.addEventListener('input', (event) => {
+        hexValueText.textContent = event.target.value;
+    });
+}
 
 function copyHex() {
   const hexText = document.getElementById('hexValue').innerText;
