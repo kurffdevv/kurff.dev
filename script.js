@@ -68,7 +68,7 @@ function convertReg2No(id1, id2, id3){
     if (stupidNum > 0) {
       if (stupidVal !== ""){
         if (stupidVal == "moon"){
-          const newOut = stupidNum * (1/9.82);
+          const newOut = stupidNum * (1.62/9.82);
 
           stupidOut.textContent = `output: ${newOut.toFixed(2)}`
         }
