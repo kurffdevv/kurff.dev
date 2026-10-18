@@ -50,7 +50,7 @@ function convertReg2No(id1, id2, id3){
   } 
   else if (stupidNum <= 0) {
     stupidOut.textContent = `error 1594: inputted number must be freaking larger than zero you idiot, you actual dumb doorstopper that kills people who touch their grass.`;
-
+  }
   if (stupidNum > 0) {
     if (stupidVal !== ""){
       if (stupidVal == "moon"){
@@ -135,8 +135,7 @@ function moveUpAndDown() {
   element.style.transition = 'transform 0.5s ease-in-out';
   element.style.transform = 'translateY(-100px)';
 
-    setTimeout(() => {
-      element.style.transform = 'translateY(0)';
-    }, 2000);
-  }
+  setTimeout(() => {
+    element.style.transform = 'translateY(0)';
+  }, 2000);
 }
