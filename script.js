@@ -135,7 +135,8 @@ function moveUpAndDown() {
   element.style.transition = 'transform 0.5s ease-in-out';
   element.style.transform = 'translateY(-100px)';
 
-  setTimeout(() => {
-    element.style.transform = 'translateY(0)';
-  }, 2000);
+    setTimeout(() => {
+      element.style.transform = 'translateY(0)';
+    }, 2000);
+  }
 }
